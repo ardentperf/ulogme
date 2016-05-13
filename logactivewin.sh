@@ -38,8 +38,7 @@ do
 	if [ $islocked = true ]; then
 		curtitle="__LOCKEDSCREEN"
 	else 
-		id=$(xdotool getactivewindow)
-		curtitle=$(wmctrl -lpG | while read -a a; do w=${a[0]}; if (($((16#${w:2}))==id)) ; then echo "${a[@]:8}"; break; fi; done)
+		curtitle=$(xdotool getwindowfocus getwindowname)
 	fi
 
 	perform_write=false
